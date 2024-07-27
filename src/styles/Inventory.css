@@ -1,0 +1,87 @@
+.loadout-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 100px); /* 3 columns of 100px width each */
+    grid-template-rows: repeat(3, 100px) 100px; /* 3 rows of 100px height each and an additional row of 100px */
+    gap: 10px; /* Optional: Adds space between the grid items */
+    justify-content: center; /* Center the grid horizontally */
+    align-items: center; /* Center the grid vertically */
+    grid-template-areas:
+    "bag head cape"
+    "main body off"
+    "potion feet food"
+    ". mount .";
+}
+
+.loadout-item {
+    max-width: 100px;
+    height: 100px;
+    border: 2px solid black;
+}
+
+.loadout-item img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+#item-bag {
+    grid-area: bag;
+    width: 90px;
+    height: 90px;
+    transform: translate(5px);
+}
+
+#item-head {
+    grid-area: head;
+}
+
+#item-cape {
+    grid-area: cape;
+    width: 90px;
+    height: 90px;
+    transform: translate(5px);
+}
+
+#item-main-hand {
+    grid-area: main;
+}
+
+#item-body {
+    grid-area: body;
+}
+
+#item-off-hand {
+    grid-area: off;
+}
+
+#item-potion {
+    grid-area: potion;
+    width: 90px;
+    height: 90px;
+    transform: translate(5px);
+}
+
+#item-feet {
+    grid-area: feet;
+}
+
+#item-food {
+    grid-area: food;
+    width: 90px;
+    height: 90px;
+    transform: translate(5px);
+}
+
+#item-mount {
+    grid-area: mount;
+    width: 90px;
+    height: 90px;
+    transform: translate(5px);
+}
+
+.loadout-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}

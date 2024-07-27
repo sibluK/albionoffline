@@ -1,0 +1,25 @@
+.button {
+    background-color: #e1c917;
+    border: none;
+    padding: 10px;
+    border-radius: 7px;
+    width: 100px;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: #c9b415;
+    transition: 0.2s;
+}
+
+.button:active {
+    background-color: #9a9155;
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    padding: 20px;
+}
