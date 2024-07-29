@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/repository-name/static/css/main.926c1fc3.css",
-    "main.js": "/repository-name/static/js/main.79cbe415.js",
-    "static/js/453.d68e9e3a.chunk.js": "/repository-name/static/js/453.d68e9e3a.chunk.js",
-    "index.html": "/repository-name/index.html",
-    "main.926c1fc3.css.map": "/repository-name/static/css/main.926c1fc3.css.map",
-    "main.79cbe415.js.map": "/repository-name/static/js/main.79cbe415.js.map",
-    "453.d68e9e3a.chunk.js.map": "/repository-name/static/js/453.d68e9e3a.chunk.js.map"
+    "main.css": "/albionoffline/static/css/main.926c1fc3.css",
+    "main.js": "/albionoffline/static/js/main.2e90893d.js",
+    "static/js/453.d68e9e3a.chunk.js": "/albionoffline/static/js/453.d68e9e3a.chunk.js",
+    "index.html": "/albionoffline/index.html",
+    "main.926c1fc3.css.map": "/albionoffline/static/css/main.926c1fc3.css.map",
+    "main.2e90893d.js.map": "/albionoffline/static/js/main.2e90893d.js.map",
+    "453.d68e9e3a.chunk.js.map": "/albionoffline/static/js/453.d68e9e3a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.926c1fc3.css",
-    "static/js/main.79cbe415.js"
+    "static/js/main.2e90893d.js"
   ]
 }
