@@ -7,7 +7,8 @@ function Inventory() {
   const [items, setItems] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const [lockedItems, setLockedItems] = useState({});
+  const [tooltip, setTooltip] = useState({ visible: false, content: {}, x: 0, y: 0 });
 
   const selectRandomItem = (items) => {
     if (items.length > 0) {
@@ -18,15 +19,48 @@ function Inventory() {
   };
 
   const reroll = (data) => {
-    setLoading(true);
+    //setLoading(true);
     setTimeout(() => {
       const newItems = {};
       for (const [key, items] of Object.entries(data)) {
-        newItems[key] = selectRandomItem(items);
+        newItems[key] = lockedItems[key] || selectRandomItem(items);
       }
       setItems(newItems);
       setLoading(false);
-    }, 1000);
+    }, 500);
+  };
+
+  const toggleLockItem = (key) => {
+    setLockedItems((prevLockedItems) => {
+      const newLockedItems = { ...prevLockedItems };
+      if (newLockedItems[key]) {
+        delete newLockedItems[key];
+      } else {
+        newLockedItems[key] = items[key];
+      }
+      return newLockedItems;
+    });
+  };
+
+  const showTooltip = (event, item) => {
+    setTooltip({
+      visible: true,
+      content: item,
+      x: event.clientX,
+      y: event.clientY
+    });
+  };
+
+  const hideTooltip = () => {
+    setTooltip({ ...tooltip, visible: false });
+  };
+
+  const updateTooltipPosition = (event) => {
+    setTooltip((prevTooltip) => ({
+      ...prevTooltip,
+      x: event.clientX,
+      y: event.clientY
+    }));
   };
 
   useEffect(() => {
@@ -99,40 +133,152 @@ function Inventory() {
     <>
       <div className='loadout-wrapper'>
         <div className='loadout-item' id='item-bag'>
-          {items.bag && <img src={items.bag.icon} alt={items.bag.name} />}
+          {items.bag && (
+            <img
+              onClick={() => toggleLockItem('bag')}
+              onMouseEnter={(e) => showTooltip(e, items.bag)}
+              onMouseMove={updateTooltipPosition}
+              onMouseLeave={hideTooltip}
+              src={items.bag.icon}
+              alt={items.bag.name}
+              className={lockedItems.bag ? 'locked-item' : ''}
+            />
+          )}
         </div>
         <div className='loadout-item' id='item-head'>
-          {items.head && <img src={items.head.icon} alt={items.head.name} />}
+          {items.head && (
+            <img
+              onClick={() => toggleLockItem('head')}
+              onMouseEnter={(e) => showTooltip(e, items.head)}
+              onMouseMove={updateTooltipPosition}
+              onMouseLeave={hideTooltip}
+              src={items.head.icon}
+              alt={items.head.name}
+              className={lockedItems.head ? 'locked-item' : ''}
+            />
+          )}
         </div>
         <div className='loadout-item' id='item-cape'>
-          {items.cape && <img src={items.cape.icon} alt={items.cape.name} />}
+          {items.cape && (
+            <img
+              onClick={() => toggleLockItem('cape')}
+              onMouseEnter={(e) => showTooltip(e, items.cape)}
+              onMouseMove={updateTooltipPosition}
+              onMouseLeave={hideTooltip}
+              src={items.cape.icon}
+              alt={items.cape.name}
+              className={lockedItems.cape ? 'locked-item' : ''}
+            />
+          )}
         </div>
         <div className='loadout-item' id='item-main-hand'>
-          {items.mainHand && <img src={items.mainHand.icon} alt={items.mainHand.name} />}
+          {items.mainHand && (
+            <img
+              onClick={() => toggleLockItem('mainHand')}
+              onMouseEnter={(e) => showTooltip(e, items.mainHand)}
+              onMouseMove={updateTooltipPosition}
+              onMouseLeave={hideTooltip}
+              src={items.mainHand.icon}
+              alt={items.mainHand.name}
+              className={lockedItems.mainHand ? 'locked-item' : ''}
+            />
+          )}
         </div>
         <div className='loadout-item' id='item-body'>
-          {items.body && <img src={items.body.icon} alt={items.body.name} />}
+          {items.body && (
+            <img
+              onClick={() => toggleLockItem('body')}
+              onMouseEnter={(e) => showTooltip(e, items.body)}
+              onMouseMove={updateTooltipPosition}
+              onMouseLeave={hideTooltip}
+              src={items.body.icon}
+              alt={items.body.name}
+              className={lockedItems.body ? 'locked-item' : ''}
+            />
+          )}
         </div>
         <div className='loadout-item' id='item-off-hand'>
-          {items.offHand && <img src={items.offHand.icon} alt={items.offHand.name} />}
+          {items.offHand && (
+            <img
+              onClick={() => toggleLockItem('offHand')}
+              onMouseEnter={(e) => showTooltip(e, items.offHand)}
+              onMouseMove={updateTooltipPosition}
+              onMouseLeave={hideTooltip}
+              src={items.offHand.icon}
+              alt={items.offHand.name}
+              className={lockedItems.offHand ? 'locked-item' : ''}
+            />
+          )}
         </div>
         <div className='loadout-item' id='item-potion'>
-          {items.potion && <img src={items.potion.icon} alt={items.potion.name} />}
+          {items.potion && (
+            <img
+              onClick={() => toggleLockItem('potion')}
+              onMouseEnter={(e) => showTooltip(e, items.potion)}
+              onMouseMove={updateTooltipPosition}
+              onMouseLeave={hideTooltip}
+              src={items.potion.icon}
+              alt={items.potion.name}
+              className={lockedItems.potion ? 'locked-item' : ''}
+            />
+          )}
         </div>
         <div className='loadout-item' id='item-feet'>
-          {items.feet && <img src={items.feet.icon} alt={items.feet.name} />}
+          {items.feet && (
+            <img
+              onClick={() => toggleLockItem('feet')}
+              onMouseEnter={(e) => showTooltip(e, items.feet)}
+              onMouseMove={updateTooltipPosition}
+              onMouseLeave={hideTooltip}
+              src={items.feet.icon}
+              alt={items.feet.name}
+              className={lockedItems.feet ? 'locked-item' : ''}
+            />
+          )}
         </div>
         <div className='loadout-item' id='item-food'>
-          {items.food && <img src={items.food.icon} alt={items.food.name} />}
+          {items.food && (
+            <img
+              onClick={() => toggleLockItem('food')}
+              onMouseEnter={(e) => showTooltip(e, items.food)}
+              onMouseMove={updateTooltipPosition}
+              onMouseLeave={hideTooltip}
+              src={items.food.icon}
+              alt={items.food.name}
+              className={lockedItems.food ? 'locked-item' : ''}
+            />
+          )}
         </div>
         <div className='loadout-item' id='item-mount'>
-          {items.mount && <img src={items.mount.icon} alt={items.mount.name} />}
+          {items.mount && (
+            <img
+              onClick={() => toggleLockItem('mount')}
+              onMouseEnter={(e) => showTooltip(e, items.mount)}
+              onMouseMove={updateTooltipPosition}
+              onMouseLeave={hideTooltip}
+              src={items.mount.icon}
+              alt={items.mount.name}
+              className={lockedItems.mount ? 'locked-item' : ''}
+            />
+          )}
         </div>
       </div>
 
       <div className='button-wrapper'>
             <button className='button' id='reroll-button'  onClick={() => reroll(fetchedData)}>Reroll</button>
+      </div>
+
+
+      {tooltip.visible && (
+        <div
+          className='tooltip'
+          style={{ top: tooltip.y, left: tooltip.x }}
+        >
+          <h3>{tooltip.content.name}</h3>
+          <p>{tooltip.content.description}</p>
+          {/* Add more item details as needed */}
         </div>
+      )}
     </>
   );
 }

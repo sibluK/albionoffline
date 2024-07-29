@@ -16,18 +16,32 @@
     max-width: 100px;
     height: 100px;
     border: 2px solid black;
+    border-radius: 10px;
 }
 
 .loadout-item img {
     max-width: 100%;
     max-height: 100%;
-  }
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.loadout-item:hover {
+    cursor: pointer;
+    background-color: gold;
+    transition: 0.3s;
+}
+
+.locked-item {
+    background-color: gold;
+}
 
 #item-bag {
     grid-area: bag;
-    width: 90px;
-    height: 90px;
-    transform: translate(5px);
+    width: 100px;
+    height: 100px;
+
 }
 
 #item-head {
@@ -36,9 +50,7 @@
 
 #item-cape {
     grid-area: cape;
-    width: 90px;
-    height: 90px;
-    transform: translate(5px);
+
 }
 
 #item-main-hand {
@@ -55,9 +67,7 @@
 
 #item-potion {
     grid-area: potion;
-    width: 90px;
-    height: 90px;
-    transform: translate(5px);
+
 }
 
 #item-feet {
@@ -66,16 +76,12 @@
 
 #item-food {
     grid-area: food;
-    width: 90px;
-    height: 90px;
-    transform: translate(5px);
+
 }
 
 #item-mount {
     grid-area: mount;
-    width: 90px;
-    height: 90px;
-    transform: translate(5px);
+
 }
 
 .loadout-page {
@@ -85,3 +91,12 @@
     align-items: center;
     margin-top: 100px;
 }
+
+.tooltip {
+    position: absolute;
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px;
+    z-index: 1000;
+    pointer-events: none;
+  }
