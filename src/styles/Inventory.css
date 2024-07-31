@@ -5,11 +5,15 @@
     gap: 10px; /* Optional: Adds space between the grid items */
     justify-content: center; /* Center the grid horizontally */
     align-items: center; /* Center the grid vertically */
+    border-bottom: 1px solid grey;
+    width: 100%;
+    padding-bottom: 50px;
     grid-template-areas:
     "bag head cape"
     "main body off"
     "potion feet food"
-    ". mount .";
+    "reroll mount refresh"
+
 }
 
 .loadout-item {
@@ -85,12 +89,21 @@
 
 }
 
+#reroll-button {
+    grid-area: reroll;
+    padding-bottom: 0;
+}
+
+#refresh-button {
+    grid-area: refresh;
+    padding-bottom: 0;
+}
+
+
 .loadout-page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     margin-top: 100px;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .tooltip {
@@ -108,4 +121,28 @@
 
 h5 span {
     font-weight: 700;
+}
+
+@media (max-width: 600px) {
+    .loadout-page {
+        flex-direction: column;
+    }
+}
+
+#reroll-button img {
+    width: 50px;
+    padding: 10px
+}
+
+#refresh-button img {
+    width: 50px;
+    padding: 10px
+}
+
+.info-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid grey;
+    padding-bottom: 150px;
 }

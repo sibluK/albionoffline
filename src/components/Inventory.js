@@ -69,11 +69,13 @@ function Inventory() {
       setLoading(false);
     }, 500);
   };
-  
-  
-  
-  
-  
+
+  const refresh = () => {
+    Object.keys(lockedItems).forEach(key => {
+      delete lockedItems[key];
+    });
+    setLockedItems({ ...lockedItems });
+  };
   
   const toggleLockItem = (key) => {
     setLockedItems((prevLockedItems) => {
@@ -191,12 +193,12 @@ function Inventory() {
   }, []);
 
   if (loading) {
-    return <div>Fetching items...</div>;
+    return <div className='info-message'>Fetching items...</div>;
   }
 
   if (error) {
     console.log(error.message)
-    return <div>Error. Try again...</div>;
+    return <div className='info-message'>Error. Try again...</div>;
   }
 
   return (
@@ -332,10 +334,15 @@ function Inventory() {
             />
           )}
         </div>
-      </div>
 
-      <div className='button-wrapper'>
-            <button className='button' id='reroll-button'  onClick={() => reroll(fetchedData)}>Reroll</button>
+        <div className='button-wrapper'>
+          <button className='button' id='reroll-button'  onClick={() => reroll(fetchedData)}><img src='dices.png'></img></button>
+        </div>
+
+        <div className='button-wrapper'>
+          <button className='button' id='refresh-button'  onClick={() => refresh()}><img src='unlocked.png'></img></button>
+        </div>
+
       </div>
 
 

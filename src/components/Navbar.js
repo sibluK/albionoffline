@@ -12,10 +12,10 @@ function Navbar() {
             <Link to="/" className="nav-links">Home</Link>
           </li>
           <li className="nav-item">
-            <Link to="/Loadout" className="nav-links">Lucky Loadout</Link>
+            <Link to="/loadout" className="nav-links">Lucky Loadout</Link>
           </li>
           <li className="nav-item">
-            <Link to="/Gold" className="nav-links">Gold Tracker</Link>
+            <Link to="/gold" className="nav-links">Gold Tracker</Link>
           </li>
         </ul>
       </div>
