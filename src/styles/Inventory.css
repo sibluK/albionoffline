@@ -1,23 +1,22 @@
 .loadout-wrapper {
     display: grid;
-    grid-template-columns: repeat(3, 100px); /* 3 columns of 100px width each */
-    grid-template-rows: repeat(3, 100px) 100px; /* 3 rows of 100px height each and an additional row of 100px */
-    gap: 10px; /* Optional: Adds space between the grid items */
-    justify-content: center; /* Center the grid horizontally */
-    align-items: center; /* Center the grid vertically */
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px) 100px; 
+    gap: 10px; 
+    justify-content: center; 
+    align-items: center; 
     border-bottom: 1px solid grey;
-    width: 100%;
-    padding-bottom: 50px;
+    padding-top: 70px;
+    padding-bottom: 70px;
     grid-template-areas:
     "bag head cape"
     "main body off"
     "potion feet food"
     "reroll mount refresh"
-
 }
 
 .loadout-item {
-    max-width: 100px;
+    width: 100px;
     height: 100px;
     border: 2px solid black;
     border-radius: 10px;
@@ -26,8 +25,6 @@
 .loadout-item img {
     max-width: 100%;
     max-height: 100%;
-    width: 100px;
-    height: 100px;
     border-radius: 10px;
 }
 
@@ -42,66 +39,7 @@
     opacity: 0.7;
 }
 
-#item-bag {
-    grid-area: bag;
-    width: 100px;
-    height: 100px;
-
-}
-
-#item-head {
-    grid-area: head;
-}
-
-#item-cape {
-    grid-area: cape;
-
-}
-
-#item-main-hand {
-    grid-area: main;
-}
-
-#item-body {
-    grid-area: body;
-}
-
-#item-off-hand {
-    grid-area: off;
-}
-
-#item-potion {
-    grid-area: potion;
-
-}
-
-#item-feet {
-    grid-area: feet;
-}
-
-#item-food {
-    grid-area: food;
-
-}
-
-#item-mount {
-    grid-area: mount;
-
-}
-
-#reroll-button {
-    grid-area: reroll;
-    padding-bottom: 0;
-}
-
-#refresh-button {
-    grid-area: refresh;
-    padding-bottom: 0;
-}
-
-
 .loadout-page {
-    margin-top: 100px;
     flex-wrap: wrap;
     gap: 20px;
 }
@@ -131,12 +69,12 @@ h5 span {
 
 #reroll-button img {
     width: 50px;
-    padding: 10px
+    padding: 10px;
 }
 
 #refresh-button img {
     width: 50px;
-    padding: 10px
+    padding: 10px;
 }
 
 .info-message {
@@ -145,4 +83,58 @@ h5 span {
     align-items: center;
     border-bottom: 1px solid grey;
     padding-bottom: 150px;
+}
+
+#item-bag {
+    grid-area: bag;
+}
+
+#item-head {
+    grid-area: head;
+}
+
+#item-cape {
+    grid-area: cape;
+}
+
+#item-main-hand {
+    grid-area: main;
+}
+
+#item-body {
+    grid-area: body;
+}
+
+#item-off-hand {
+    grid-area: off;
+}
+
+#item-potion {
+    grid-area: potion;
+}
+
+#item-feet {
+    grid-area: feet;
+}
+
+#item-food {
+    grid-area: food;
+}
+
+#item-mount {
+    grid-area: mount;
+}
+
+#reroll-button {
+    grid-area: reroll;
+    padding-bottom: 0;
+    border: 2px solid black;
+    transform: translate(0px, 0px);
+}
+
+#refresh-button {
+    grid-area: refresh;
+    padding-bottom: 0;
+    border: 2px solid black;
+    transform: translate(2px, 0px);
 }
