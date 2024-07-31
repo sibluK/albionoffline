@@ -18,29 +18,93 @@ function Inventory() {
     return null;
   };
 
+  const isTwoHandedWeapon = (item) => {
+    return item.identifier.includes('_2H_');
+  };
+
   const reroll = (data) => {
-    //setLoading(true);
     setTimeout(() => {
       const newItems = {};
-      for (const [key, items] of Object.entries(data)) {
-        newItems[key] = lockedItems[key] || selectRandomItem(items);
+  
+      // Determine the main hand item
+      let mainHandItem;
+      if (lockedItems.mainHand) {
+        // If main hand is locked, use the locked item
+        mainHandItem = lockedItems.mainHand;
+      } else {
+        // If off-hand is locked, only select single-handed weapons for the main hand
+        if (lockedItems.offHand) {
+          const singleHandedWeapons = data.mainHand.filter(item => !isTwoHandedWeapon(item));
+          mainHandItem = selectRandomItem(singleHandedWeapons);
+        } else {
+          mainHandItem = selectRandomItem(data.mainHand);
+        }
       }
+  
+      newItems.mainHand = mainHandItem;
+  
+      // Handle off-hand based on the main hand item
+      if (isTwoHandedWeapon(mainHandItem)) {
+        // If the main hand item is a two-handed weapon, use it for the off-hand if not locked
+        newItems.offHand = lockedItems.offHand || mainHandItem;
+      } else {
+        // Otherwise, set off-hand to the locked item or a new random item
+        newItems.offHand = lockedItems.offHand || selectRandomItem(data.offHand);
+      }
+  
+      // Handle other items
+      for (const key of Object.keys(data)) {
+        if (key !== 'mainHand' && key !== 'offHand') {
+          newItems[key] = lockedItems[key] || selectRandomItem(data[key]);
+        }
+      }
+  
       setItems(newItems);
       setLoading(false);
     }, 500);
   };
-
+  
+  
+  
+  
+  
   const toggleLockItem = (key) => {
     setLockedItems((prevLockedItems) => {
       const newLockedItems = { ...prevLockedItems };
-      if (newLockedItems[key]) {
-        delete newLockedItems[key];
+
+      if (key === 'mainHand' || (key === 'offHand' && isTwoHandedWeapon(items.mainHand))) {
+        if (newLockedItems.mainHand) {
+          delete newLockedItems.mainHand;
+          if (isTwoHandedWeapon(items.mainHand)) {
+            delete newLockedItems.offHand;
+          }
+        } else {
+          newLockedItems.mainHand = items.mainHand;
+          if (isTwoHandedWeapon(items.mainHand)) {
+            newLockedItems.offHand = items.mainHand;
+          }
+        }
+      } else if (key === 'offHand') {
+        if (!isTwoHandedWeapon(items.mainHand)) {
+          if (newLockedItems.offHand) {
+            delete newLockedItems.offHand;
+          } else {
+            newLockedItems.offHand = items.offHand;
+          }
+        }
       } else {
-        newLockedItems[key] = items[key];
+        if (newLockedItems[key]) {
+          delete newLockedItems[key];
+        } else {
+          newLockedItems[key] = items[key];
+        }
       }
+
       return newLockedItems;
     });
   };
+  
+  
 
   const showTooltip = (event, item) => {
     setTooltip({
@@ -111,10 +175,8 @@ function Inventory() {
 
         setFetchedData(combinedData);
         reroll(combinedData);
-        setLoading(false);
       } catch (error) {
         setError(error);
-        setLoading(false);
       }
     };
 
@@ -122,11 +184,12 @@ function Inventory() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Fetching items...</div>;
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    console.log(error.message)
+    return <div>Error. Try again...</div>;
   }
 
   return (
@@ -274,9 +337,9 @@ function Inventory() {
           className='tooltip'
           style={{ top: tooltip.y, left: tooltip.x }}
         >
-          <h3>{tooltip.content.name}</h3>
-          <p>{tooltip.content.description}</p>
-          {/* Add more item details as needed */}
+          <h3 className='item-name'>{tooltip.content.name}</h3>
+          <h5><span>Base IP: </span>{tooltip.content.item_power}</h5>
+          <h5><span>ID: </span>{tooltip.content.identifier}</h5>
         </div>
       )}
     </>

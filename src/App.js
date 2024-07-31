@@ -6,9 +6,11 @@ import Loadout from './components/Loadout.js';
 import Home from './components/Home.js';
 import './App.css';
 
+const basename = '/albionoffline'
+
 function App() {
   return (
-    <Router>
+    <Router basename={basename}>
       <div className="App">
         <Navbar />
         <Routes>
