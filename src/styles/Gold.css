@@ -23,3 +23,7 @@
     gap: 25px;
     padding: 20px;
 }
+
+.button.selected {
+    border: 1px solid black;
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Brush, ResponsiveContainer } from 'recharts';
+import * as d3 from 'd3';
 import '../styles/Gold.css';
 
 const formatDate = (date) => {
@@ -27,10 +28,22 @@ const calculateStartDate = (range) => {
     return formatDate(startDate);
   };
 
+  const filterOutliers = (data) => {
+    const prices = data.map(item => item.price);
+    const q1 = d3.quantile(prices, 0.25);
+    const q3 = d3.quantile(prices, 0.75);
+    const iqr = q3 - q1;
+    const lowerBound = q1 - 1.5 * iqr;
+    const upperBound = q3 + 1.5 * iqr;
+  
+    return data.filter(item => item.price >= lowerBound && item.price <= upperBound);
+  };
+
 function Chart() {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [selectedRange, setSelectedRange] = useState('month');
     const [dateRange, setDateRange] = useState({
         startDate: calculateStartDate('month'),
         endDate: formatDate(new Date()),
@@ -48,7 +61,8 @@ function Chart() {
                     ...item,
                     timestamp: new Date(item.timestamp).toLocaleString()
                 }));
-                setData(transformedData);
+                const filteredData = filterOutliers(transformedData);
+                setData(filteredData);
                 setLoading(false);
             })
             .catch(error => {
@@ -66,11 +80,15 @@ function Chart() {
                 endDate = formatDate(new Date());
                 break;
               case 'week':
-                startDate = calculateStartDate('week');;
+                startDate = calculateStartDate('week');
                 endDate = formatDate(new Date());
                 break;
               case 'today':
                 startDate = endDate = formatDate(new Date());
+                break;
+              case 'all':
+                startDate = formatDate(new Date('2024-04-29'));
+                endDate = formatDate(new Date());
                 break;
               default:
                 startDate = calculateStartDate('month');
@@ -78,7 +96,7 @@ function Chart() {
             }
         
             setDateRange({ startDate, endDate });
-            //setLoading(true);
+            setSelectedRange(range);
           };
 
         if (loading) return <div>Loading...</div>;
@@ -104,10 +122,35 @@ function Chart() {
             <Brush dataKey="timestamp" height={30} stroke="#000000" />
         </LineChart>
         <div className='button-wrapper'>
-            <button className='button' id='month-button'  onClick={() => handleButtonClick('month')}>Past month</button>
-            <button className='button' id='week-button'  onClick={() => handleButtonClick('week')}>Past week</button>
-            <button className='button' id='today-button'  onClick={() => handleButtonClick('today')}>Today</button>
-        </div>
+        <button 
+          className={`button ${selectedRange === 'all' ? 'selected' : ''}`} 
+          id='all-time-button'  
+          onClick={() => handleButtonClick('all')}
+        >
+          All time
+        </button>
+        <button 
+          className={`button ${selectedRange === 'month' ? 'selected' : ''}`} 
+          id='month-button'  
+          onClick={() => handleButtonClick('month')}
+        >
+          Past month
+        </button>
+        <button 
+          className={`button ${selectedRange === 'week' ? 'selected' : ''}`} 
+          id='week-button'  
+          onClick={() => handleButtonClick('week')}
+        >
+          Past week
+        </button>
+        <button 
+          className={`button ${selectedRange === 'today' ? 'selected' : ''}`} 
+          id='today-button'  
+          onClick={() => handleButtonClick('today')}
+        >
+          Today
+        </button>
+      </div>
       </ResponsiveContainer>
     );
   }
