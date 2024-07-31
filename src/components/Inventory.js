@@ -26,29 +26,35 @@ function Inventory() {
     setTimeout(() => {
       const newItems = {};
   
-      // Determine the main hand item
       let mainHandItem;
       if (lockedItems.mainHand) {
-        // If main hand is locked, use the locked item
         mainHandItem = lockedItems.mainHand;
+      } else if (lockedItems.offHand) {
+        // Filter main hand items based on the criteria
+        const filteredMainHandItems = data.mainHand.filter(item =>
+          !isTwoHandedWeapon(item) &&
+          !item.identifier.includes('_OFF_') &&
+          !item.identifier.includes('Tome of Spells') &&
+          !item.identifier.includes('Torch') &&
+          !item.identifier.includes('Diary')
+        );
+        mainHandItem = selectRandomItem(filteredMainHandItems);
       } else {
-        // If off-hand is locked, only select single-handed weapons for the main hand
-        if (lockedItems.offHand) {
-          const singleHandedWeapons = data.mainHand.filter(item => !isTwoHandedWeapon(item));
-          mainHandItem = selectRandomItem(singleHandedWeapons);
-        } else {
-          mainHandItem = selectRandomItem(data.mainHand);
-        }
+        // Default filtering for main hand
+        const filteredMainHandItems = data.mainHand.filter(item =>
+          !item.identifier.includes('_OFF_') &&
+          !item.identifier.includes('Tome of Spells') &&
+          !item.identifier.includes('Torch') &&
+          !item.identifier.includes('Diary')
+        );
+        mainHandItem = selectRandomItem(filteredMainHandItems);
       }
   
       newItems.mainHand = mainHandItem;
   
-      // Handle off-hand based on the main hand item
       if (isTwoHandedWeapon(mainHandItem)) {
-        // If the main hand item is a two-handed weapon, use it for the off-hand if not locked
         newItems.offHand = lockedItems.offHand || mainHandItem;
       } else {
-        // Otherwise, set off-hand to the locked item or a new random item
         newItems.offHand = lockedItems.offHand || selectRandomItem(data.offHand);
       }
   
@@ -63,6 +69,7 @@ function Inventory() {
       setLoading(false);
     }, 500);
   };
+  
   
   
   
