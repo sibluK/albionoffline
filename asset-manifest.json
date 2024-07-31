@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/albionoffline/static/css/main.4f4894b4.css",
-    "main.js": "/albionoffline/static/js/main.2c3e980d.js",
+    "main.js": "/albionoffline/static/js/main.a64e3927.js",
     "static/js/453.d68e9e3a.chunk.js": "/albionoffline/static/js/453.d68e9e3a.chunk.js",
     "index.html": "/albionoffline/index.html",
     "main.4f4894b4.css.map": "/albionoffline/static/css/main.4f4894b4.css.map",
-    "main.2c3e980d.js.map": "/albionoffline/static/js/main.2c3e980d.js.map",
+    "main.a64e3927.js.map": "/albionoffline/static/js/main.a64e3927.js.map",
     "453.d68e9e3a.chunk.js.map": "/albionoffline/static/js/453.d68e9e3a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4f4894b4.css",
-    "static/js/main.2c3e980d.js"
+    "static/js/main.a64e3927.js"
   ]
 }
