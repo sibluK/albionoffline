@@ -336,11 +336,11 @@ function Inventory() {
         </div>
 
         <div className='button-wrapper'>
-          <button className='button' id='reroll-button'  onClick={() => reroll(fetchedData)}><img src='dices.png'></img></button>
+          <button className='button' id='reroll-button'  onClick={() => reroll(fetchedData)}><img src='dices.png' alt='dices'></img></button>
         </div>
 
         <div className='button-wrapper'>
-          <button className='button' id='refresh-button'  onClick={() => refresh()}><img src='unlocked.png'></img></button>
+          <button className='button' id='refresh-button'  onClick={() => refresh()}><img src='unlocked.png' alt='lock'></img></button>
         </div>
 
       </div>

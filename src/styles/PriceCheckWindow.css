@@ -1,5 +1,28 @@
 .price-check-wrapper {
-    width: 100%;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding-right: 200px;
     margin-left: 200px;
+    gap: 20px;
+}
+
+.item-filters-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.item-filters-wrapper {
+
+}
+
+.price-display-wrapper {
+
+}
+
+#item-id-input, #qualities, #cities, #check-price-button {
+    padding: 10px;
 }
