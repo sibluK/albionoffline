@@ -78,8 +78,6 @@ function PriceCheckWindow() {
           <option value="Caerleon">Caerleon</option>
           <option value="Brecilien">Brecilien</option>
         </select>
-
-
       </div>
 
       <div className='price-display-wrapper'>

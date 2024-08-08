@@ -86,6 +86,10 @@ h5 span {
     padding-bottom: 70px;
 }
 
+.two-handed {
+    opacity: 0.6;
+}
+
 #item-bag {
     grid-area: bag;
 }

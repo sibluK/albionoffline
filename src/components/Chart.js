@@ -72,32 +72,35 @@ function Chart() {
         }, [dateRange]);
 
         const handleButtonClick = (range) => {
-            let startDate, endDate;
-        
-            switch (range) {
+          let startDate, endDate;
+      
+          switch (range) {
               case 'month':
-                startDate = calculateStartDate('month');
-                endDate = formatDate(new Date());
-                break;
+                  startDate = calculateStartDate('month');
+                  endDate = formatDate(new Date());
+                  break;
               case 'week':
-                startDate = calculateStartDate('week');
-                endDate = formatDate(new Date());
-                break;
+                  startDate = calculateStartDate('week');
+                  endDate = formatDate(new Date());
+                  break;
               case 'today':
-                startDate = endDate = formatDate(new Date());
-                break;
+                  const today = new Date();
+                  startDate = formatDate(new Date(today.setDate(today.getDate() - 1)));
+                  endDate = formatDate(new Date());
+                  break;
               case 'all':
-                startDate = formatDate(new Date('2024-04-29'));
-                endDate = formatDate(new Date());
-                break;
+                  startDate = formatDate(new Date('2024-04-29'));
+                  endDate = formatDate(new Date());
+                  break;
               default:
-                startDate = calculateStartDate('month');
-                endDate = formatDate(new Date());
-            }
-        
-            setDateRange({ startDate, endDate });
-            setSelectedRange(range);
-          };
+                  startDate = calculateStartDate('month');
+                  endDate = formatDate(new Date());
+          }
+      
+          setDateRange({ startDate, endDate });
+          setSelectedRange(range);
+      };
+      
 
         if (loading) return <div>Loading...</div>;
         if (error) return <div>Error: {error.message}</div>;
@@ -148,7 +151,7 @@ function Chart() {
           id='today-button'  
           onClick={() => handleButtonClick('today')}
         >
-          Today
+          24h
         </button>
       </div>
       </ResponsiveContainer>

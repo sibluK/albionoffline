@@ -10,7 +10,7 @@ function Loadout() {
 
       <div className='loadout-page'>
         <Inventory/>
-        <PriceCheckWindow/>
+        {/* <PriceCheckWindow /> */}
       </div>
 
     </>

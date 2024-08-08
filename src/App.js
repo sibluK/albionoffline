@@ -4,6 +4,7 @@ import Navbar from './components/Navbar.js';
 import Gold from './components/Gold.js';
 import Loadout from './components/Loadout.js';
 import Home from './components/Home.js';
+import Footer from './components/Footer.js'; 
 import './App.css';
 
 const basename = '/albionoffline'
@@ -15,9 +16,10 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Loadout" element={<Loadout />} />
-          <Route path="/Gold" element={<Gold />} />
+          <Route path="/loadout" element={<Loadout />} />
+          <Route path="/gold" element={<Gold />} />
         </Routes>
+        <Footer />
       </div>
     </Router>
   );

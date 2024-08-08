@@ -1,0 +1,44 @@
+#city-name {
+    border-bottom: 1px solid grey;
+}
+
+.city-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    min-width: 400px;
+}
+
+.city-card #city-name {
+    margin-bottom: 15px;
+}
+
+.item-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Two columns: one for name and one for price */
+    gap: 7px; /* Space between rows and columns */
+    align-items: center; /* Center items vertically */
+}
+
+.grid-row {
+    display: contents;
+}
+
+.row-price {
+    text-align: right;
+}
+
+.item-grid {
+    padding: 0px 0px 10px 0px;
+    border-bottom: 1px solid grey;
+}
+
+.row-date {
+    text-align: right;
+}
+
+
+

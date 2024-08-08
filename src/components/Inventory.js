@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/Inventory.css';
+import LoadoutPrice from './LoadoutPrice.js';
 
 function Inventory() {
   const [fetchedData, setFetchedData] = useState({});
@@ -278,7 +279,8 @@ function Inventory() {
               onMouseLeave={hideTooltip}
               src={items.offHand.icon}
               alt={items.offHand.name}
-              className={lockedItems.offHand ? 'locked-item' : ''}
+              className={`${lockedItems.offHand ? 'locked-item' : ''} ${isTwoHandedWeapon(items.mainHand) ? 'two-handed' : ''}`}
+          
             />
           )}
         </div>
@@ -345,7 +347,6 @@ function Inventory() {
 
       </div>
 
-
       {tooltip.visible && (
         <div
           className='tooltip'
@@ -356,6 +357,10 @@ function Inventory() {
           <h5><span>ID: </span>{tooltip.content.identifier}</h5>
         </div>
       )}
+
+      <LoadoutPrice
+        lockedItems={lockedItems}
+      />
     </>
   );
 }
