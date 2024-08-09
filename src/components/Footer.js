@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/Footer.css';
 
-const Footer = () => {
+function Footer() {
     return (
         <footer className='footer'>
             <p>&copy; {new Date().getFullYear()} Albion Offline</p>
@@ -14,6 +14,8 @@ const Footer = () => {
             </nav>
         </footer>
     );
-};
+  }
 
 export default Footer;
+
+

@@ -3,7 +3,7 @@ import Inventory from './Inventory.js'
 import '../styles/Inventory.css';
 import PriceCheckWindow from './PriceCheckWindow.js';
 
-function Loadout() {
+function LuckyLoadout() {
 
   return (
     <>
@@ -17,4 +17,4 @@ function Loadout() {
   );
 }
 
-export default Loadout;
+export default LuckyLoadout;

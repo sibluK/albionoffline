@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Brush, ResponsiveContainer } from 'recharts';
 import * as d3 from 'd3';
-import '../styles/Gold.css';
+import '../styles/GoldChart.css';
 
 const formatDate = (date) => {
     const options = { month: '2-digit', day: '2-digit', year: 'numeric' };
@@ -39,7 +39,7 @@ const calculateStartDate = (range) => {
     return data.filter(item => item.price >= lowerBound && item.price <= upperBound);
   };
 
-function Chart() {
+function GoldChart() {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -158,4 +158,4 @@ function Chart() {
     );
   }
   
-  export default Chart;
+  export default GoldChart;

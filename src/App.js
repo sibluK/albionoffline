@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar.js';
-import Gold from './components/Gold.js';
-import Loadout from './components/Loadout.js';
+import GoldTracker from './components/GoldTracker.js';
+import LuckyLoadout from './components/LuckyLoadout.js';
 import Home from './components/Home.js';
 import Footer from './components/Footer.js'; 
 import './App.css';
@@ -16,10 +16,10 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/loadout" element={<Loadout />} />
-          <Route path="/gold" element={<Gold />} />
+          <Route path="/loadout" element={<LuckyLoadout />} />
+          <Route path="/gold" element={<GoldTracker />} />
         </Routes>
-        <Footer />
+        {/*<Footer />*/}
       </div>
     </Router>
   );

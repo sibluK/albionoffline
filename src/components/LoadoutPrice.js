@@ -3,9 +3,6 @@ import '../styles/LoadoutPrice.css';
 import CityLoadoutPrice from './CityLoadoutPrice.js';
 
 const LoadoutPrice = ({ lockedItems }) => {
-
-    const lockedItemsLength = Object.keys(lockedItems).length;
-
     return (
         <>
             <div className='card-container'>

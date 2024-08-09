@@ -5,9 +5,8 @@
     gap: 10px; 
     justify-content: center; 
     align-items: center; 
-    border-bottom: 1px solid grey;
     padding-top: 70px;
-    padding-bottom: 70px;
+    padding-bottom: 50px;
     grid-template-areas:
     "bag head cape"
     "main body off"
@@ -81,7 +80,7 @@ h5 span {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px solid grey;
+
     padding-top: 70px;
     padding-bottom: 70px;
 }
