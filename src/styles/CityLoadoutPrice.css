@@ -13,7 +13,7 @@
 }
 
 .city-card #city-name {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .item-grid {
@@ -39,6 +39,21 @@
 .row-date {
     text-align: right;
 }
+
+.column-item-name {
+
+}
+
+.column-item-date {
+    text-align: right;
+}
+
+.column-item-price {
+    text-align: right;
+}
+
+
+
 
 
 
