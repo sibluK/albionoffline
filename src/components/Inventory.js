@@ -136,6 +136,7 @@ function Inventory() {
       y: event.clientY
     }));
   };
+  //dawdawdawdawdawdawdawdawdwadawdawdawdawdawdawdaw
 
   useEffect(() => {
     const fetchData = async () => {
