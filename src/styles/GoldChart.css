@@ -22,12 +22,46 @@
     align-items: center;
     gap: 25px;
     padding: 20px;
+    border-bottom: 1px solid gray;
 }
 
 .button.selected {
     border: 1px solid black;
 }
 
-.button-wrapper {
-    
+.gold-calc-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 30px;
+}
+
+.gold-silver-input {
+    padding: 7px;
+    border-radius: 7px;
+    border: 1px solid black;
+}
+
+.gold-to-silver-wrapper, .silver-to-gold-wrapper {
+    border: 1px solid gray;
+    padding: 20px;
+    border-radius: 7px;
+}
+
+.gold-to-silver-wrapper h3, .silver-to-gold-wrapper h3 {
+    text-align: center;
+    padding-top: 20px;
+}
+
+#gold-icon {
+    padding-left: 5px;
+    width: 25px;
+    transform: translate(0, 20%);
+}
+
+#silver-icon {
+    padding-left: 7px;
+    width: 20px;
+    transform: translate(0, 15%);
 }

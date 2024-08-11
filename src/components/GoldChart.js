@@ -39,11 +39,18 @@ const calculateStartDate = (range) => {
     return data.filter(item => item.price >= lowerBound && item.price <= upperBound);
   };
 
+  const formatNumber = (number) => {
+    return new Intl.NumberFormat('de-DE').format(number);
+  };
+
 function GoldChart() {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [selectedRange, setSelectedRange] = useState('month');
+    const [latestGoldPrice, setLatestGoldPrice] = useState(0);
+    const [gold, setGold] = useState(0);
+    const [silver, setSilver] = useState(0);
     const [dateRange, setDateRange] = useState({
         startDate: calculateStartDate('month'),
         endDate: formatDate(new Date()),
@@ -63,6 +70,10 @@ function GoldChart() {
                 }));
                 const filteredData = filterOutliers(transformedData);
                 setData(filteredData);
+
+                if (filteredData.length > 0) {
+                  setLatestGoldPrice(filteredData[filteredData.length - 1].price);
+              }
                 setLoading(false);
             })
             .catch(error => {
@@ -110,6 +121,22 @@ function GoldChart() {
         const maxValue = data ? Math.max(...data.map(item => item.price)) + 200 : 0;
         const minValue = data ? Math.min(...data.map(item => item.price)) - 200: 0;
 
+      const silverToGold = (amount) => {
+        if (latestGoldPrice > 0) {
+          const gold = (amount / latestGoldPrice).toFixed(0);
+          return gold;
+        }
+        return 0;
+      };
+  
+      const goldToSilver = (amount) => {
+        if (latestGoldPrice > 0) {
+          const silver = (amount * latestGoldPrice).toFixed(0);
+          return silver;
+        }
+        return 0;
+      };
+
   
     return (
       <>
@@ -150,6 +177,32 @@ function GoldChart() {
             onClick={() => handleButtonClick('today')}>24h
           </button>
         </div>
+
+        <div className='gold-calc-wrapper'>
+          <div className='gold-to-silver-wrapper'>
+            <h4>Input Gold:</h4>
+            <input
+              className='gold-silver-input'
+              type='number'
+              onChange={(e) => {
+                setSilver(goldToSilver(e.target.value));
+              }}
+            ></input>
+            <h3>{formatNumber(silver)}<img id='silver-icon' src='silver.png'></img></h3>
+          </div>
+          <div className='silver-to-gold-wrapper'>
+            <h4>Input Silver:</h4>
+            <input
+              className='gold-silver-input'
+              type='number'
+              onChange={(e) => {
+                setGold(silverToGold(e.target.value));
+              }}
+            ></input>
+            <h3>{formatNumber(gold)}<img id='gold-icon' src='gold.png'></img></h3>
+          </div>
+        </div>
+
       </>
     );
   }
