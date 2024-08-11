@@ -22,7 +22,6 @@
     align-items: center;
     gap: 25px;
     padding: 20px;
-    border-bottom: 1px solid gray;
 }
 
 .button.selected {
@@ -35,6 +34,7 @@
     align-items: center;
     gap: 50px;
     padding: 30px;
+    border-top: 1px solid gray;
 }
 
 .gold-silver-input {
