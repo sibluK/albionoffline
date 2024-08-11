@@ -1,7 +1,6 @@
 import React from 'react';
 import Inventory from './Inventory.js'
 import '../styles/Inventory.css';
-import PriceCheckWindow from './PriceCheckWindow.js';
 
 function LuckyLoadout() {
 
@@ -10,7 +9,6 @@ function LuckyLoadout() {
 
       <div className='loadout-page'>
         <Inventory/>
-        {/* <PriceCheckWindow /> */}
       </div>
 
     </>

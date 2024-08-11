@@ -3,7 +3,7 @@ import axios from 'axios';
 import '../styles/LoadoutPrice.css';
 import CityLoadoutPrice from './CityLoadoutPrice.js';
 
-const cities = ['Fort Sterling', 'Lymhurst', 'Thetford', 'Martlock', 'Caerleon', 'Bridgewatch'];
+const cities = ['Fort Sterling', 'Lymhurst', 'Thetford', 'Martlock', 'Caerleon', 'Bridgewatch', 'Brecilien'];
 
 const LoadoutPrice = ({ lockedItems }) => {
     const [prices, setPrices] = useState({});

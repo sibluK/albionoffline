@@ -1,5 +1,6 @@
 #city-name {
     border-bottom: 1px solid grey;
+    font-weight: 600;
 }
 
 .city-card {
@@ -18,9 +19,9 @@
 
 .item-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr; /* Two columns: one for name and one for price */
-    gap: 7px; /* Space between rows and columns */
-    align-items: center; /* Center items vertically */
+    grid-template-columns: 1fr 1fr 1fr; 
+    gap: 7px; 
+    align-items: center; 
 }
 
 .grid-row {

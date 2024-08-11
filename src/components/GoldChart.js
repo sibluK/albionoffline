@@ -103,58 +103,54 @@ function GoldChart() {
       
 
         if (loading) return <div>Loading...</div>;
-        if (error) return <div>Error: {error.message}</div>;
+        if (error) {
+          console.log(error.message);
+        };
 
         const maxValue = data ? Math.max(...data.map(item => item.price)) + 200 : 0;
         const minValue = data ? Math.min(...data.map(item => item.price)) - 200: 0;
 
   
     return (
+      <>
         <ResponsiveContainer width="100%" height={600}>
-        <LineChart data={data} margin={{ top: 50, right: 70, left: 70, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="4 4" />
-            <XAxis dataKey="timestamp" tick={0}/>
-            <YAxis 
-                domain={[minValue, maxValue]} 
-                interval={2} 
-                tickCount={Math.ceil((maxValue) / 250) + 1} 
-                tickFormatter={(value) => value.toFixed(0)} 
-            />
-            <Tooltip />
-            <Line type="monotone" dataKey="price" stroke="#E1C917" activeDot={{ r: 6 }} />
-            <Brush dataKey="timestamp" height={30} stroke="#000000" />
-        </LineChart>
+          <LineChart data={data} margin={{ top: 50, right: 70, left: 70, bottom: 5 }}>
+              <CartesianGrid strokeDasharray="4 4" />
+              <XAxis dataKey="timestamp" tick={0}/>
+              <YAxis 
+                  domain={[minValue, maxValue]} 
+                  interval={2} 
+                  tickCount={Math.ceil((maxValue) / 250) + 1} 
+                  tickFormatter={(value) => value.toFixed(0)} 
+              />
+              <Tooltip />
+              <Line type="monotone" dataKey="price" stroke="#E1C917" activeDot={{ r: 6 }} />
+              <Brush dataKey="timestamp" height={30} stroke="#000000" />
+          </LineChart>
+        </ResponsiveContainer>
         <div className='button-wrapper'>
-        <button 
-          className={`button ${selectedRange === 'all' ? 'selected' : ''}`} 
-          id='all-time-button'  
-          onClick={() => handleButtonClick('all')}
-        >
-          All time
-        </button>
-        <button 
-          className={`button ${selectedRange === 'month' ? 'selected' : ''}`} 
-          id='month-button'  
-          onClick={() => handleButtonClick('month')}
-        >
-          Past month
-        </button>
-        <button 
-          className={`button ${selectedRange === 'week' ? 'selected' : ''}`} 
-          id='week-button'  
-          onClick={() => handleButtonClick('week')}
-        >
-          Past week
-        </button>
-        <button 
-          className={`button ${selectedRange === 'today' ? 'selected' : ''}`} 
-          id='today-button'  
-          onClick={() => handleButtonClick('today')}
-        >
-          24h
-        </button>
-      </div>
-      </ResponsiveContainer>
+          <button 
+            className={`button ${selectedRange === 'all' ? 'selected' : ''}`} 
+            id='all-time-button'  
+            onClick={() => handleButtonClick('all')}>All time
+          </button>
+          <button 
+            className={`button ${selectedRange === 'month' ? 'selected' : ''}`} 
+            id='month-button'  
+            onClick={() => handleButtonClick('month')}>Past month
+          </button>
+          <button 
+            className={`button ${selectedRange === 'week' ? 'selected' : ''}`} 
+            id='week-button'  
+            onClick={() => handleButtonClick('week')}>Past week
+          </button>
+          <button 
+            className={`button ${selectedRange === 'today' ? 'selected' : ''}`} 
+            id='today-button'  
+            onClick={() => handleButtonClick('today')}>24h
+          </button>
+        </div>
+      </>
     );
   }
   
