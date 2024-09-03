@@ -1,19 +1,18 @@
 .navbar {
-  background-color: #333;
+  background-color: black;
   color: #fff;
-  padding: 10px 20px;
+  padding: 15px 0px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   margin: 0px 150px 0px 150px;
 }
 
 .navbar-logo {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: #fff;
   text-decoration: none;
 }
@@ -21,21 +20,137 @@
 .nav-menu {
   list-style: none;
   display: flex;
-  margin: 0;
-  padding: 0;
 }
 
 .nav-item {
   margin: 0 10px;
+  padding: 5px;
 }
 
 .nav-links {
   color: #fff;
   text-decoration: none;
-  font-size: 1rem;
 }
 
 .nav-links:hover {
   text-decoration: underline;
 }
 
+/* Button styles */
+.login-button, .signup-button {
+  width: 90px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.login-button {
+  border: 2px solid whitesmoke;
+  background-color: black;
+  color: whitesmoke
+}
+
+.signup-button {
+  background-color: whitesmoke;
+  border: none;
+  color: black;
+}
+
+/* Remove default link styles inside buttons */
+.login-button a, .signup-button a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.login-button a:hover, .signup-button a:hover {
+  text-decoration: none;
+}
+
+.signup-button:hover {
+  background-color: rgb(201, 201, 201); /* Hover color for sign up button */
+}
+
+.login-button:hover {
+  background-color: #474646; /* Hover color for login button */
+  background-color: whitesmoke;
+  color: black;
+  scale: 1.05;
+}
+
+.albion-logo {
+  padding-right: 15px;
+  width: 40px;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 20px;
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed; 
+    top: 0; 
+    right: -100%; 
+    width: 40%; 
+    height: 100vh; 
+    background: black;
+    transition: all 0.5s ease;
+    opacity: 1;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+  }
+
+  .nav-menu.active {
+    right: 0;
+  }
+
+  .nav-item {
+    margin: 50px 0;
+    text-align: center;
+  }
+
+  .nav-links {
+    font-size: 1.5rem;
+  }
+
+  .menu-icon {
+    display: block;
+    z-index: 4;
+  }
+
+  .login-button, .signup-button {
+    width: 150px;
+    font-size: 1.4rem;
+  }
+
+  .navbar-logo {
+    font-size: 1.8rem;
+  }
+
+  .signup-login-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .nav-item:nth-last-child(2) {
+    margin-bottom: 10px;
+  }
+
+  .nav-item:last-child {
+    margin-bottom: 0;
+  }
+}

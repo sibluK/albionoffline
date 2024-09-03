@@ -68,7 +68,7 @@ function Inventory() {
   
       setItems(newItems);
       setLoading(false);
-    }, 500);
+    }, 0);
   };
 
   const refresh = () => {
