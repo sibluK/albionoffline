@@ -114,14 +114,12 @@ function Inventory() {
     });
   };
   
-  
-
   const showTooltip = (event, item) => {
     setTooltip({
       visible: true,
       content: item,
-      x: event.clientX,
-      y: event.clientY
+      x: event.clientX + window.scrollX,
+      y: event.clientY + window.scrollY  
     });
   };
 
@@ -132,11 +130,10 @@ function Inventory() {
   const updateTooltipPosition = (event) => {
     setTooltip((prevTooltip) => ({
       ...prevTooltip,
-      x: event.clientX,
-      y: event.clientY
+      x: event.clientX + window.scrollX, 
+      y: event.clientY + window.scrollY  
     }));
   };
-  //dawdawdawdawdawdawdawdawdwadawdawdawdawdawdawdaw
 
   useEffect(() => {
     const fetchData = async () => {
