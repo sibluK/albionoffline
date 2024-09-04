@@ -3,8 +3,6 @@
     justify-content: center;
     align-items: center;
     height: calc(100vh - 150px);
-    overflow-x: hidden;
-
 }
 
 .signup-wrapper, .login-wrapper {
@@ -17,27 +15,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-
-}
-
-.signup-container button, .login-container button {
-    width: 100px;
+    justify-content: space-evenly;
 }
 
 .signup-container input, .login-container input {
     width: 200px;
     border-radius: 4px;
     padding: 2px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
 .login-container h2 {
-    padding-top: 20px;
-    padding-bottom: 20px;
+
 }
 
 .signup-container h2 {
-    padding-top: 20px;
+
 }
 
 .signup-login-container {
@@ -57,6 +51,7 @@
 .signup-container h4, .login-container h4 {
     display: flex;
     flex-direction: column;
+    font-size: 0.8rem;
 }
 
 .login-submit-button, .signup-submit-button {
@@ -65,24 +60,23 @@
     border-radius: 7px;
     transition: 0.1s;
     font-size: 0.9rem;
+    width: 100px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .login-submit-button:hover, .signup-submit-button:hover {
     cursor: pointer;
     scale: 1.05;
-
 }
 
 .login-submit-button {
     background-color: white;
     color:black;
-    border: 2px solid black;
 }
 
 .signup-submit-button {
     background-color: white;
     color:black;
-    border: 2px solid black;
 }
 
 .choose-login-container, .choose-signup-container {
