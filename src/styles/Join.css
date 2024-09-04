@@ -1,0 +1,125 @@
+.join-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 150px);
+    overflow-x: hidden;
+
+}
+
+.signup-wrapper, .login-wrapper {
+   
+}
+
+.signup-container, .login-container {
+    width: 300px;
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+}
+
+.signup-container button, .login-container button {
+    width: 100px;
+}
+
+.signup-container input, .login-container input {
+    width: 200px;
+    border-radius: 4px;
+    padding: 2px;
+}
+
+.login-container h2 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.signup-container h2 {
+    padding-top: 20px;
+}
+
+.signup-login-container {
+    display: flex;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.login-container {
+
+}
+
+.signup-container {
+    
+}
+
+.signup-container h4, .login-container h4 {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-submit-button, .signup-submit-button {
+    border: none;
+    padding: 10px;
+    border-radius: 7px;
+    transition: 0.1s;
+    font-size: 0.9rem;
+}
+
+.login-submit-button:hover, .signup-submit-button:hover {
+    cursor: pointer;
+    scale: 1.05;
+
+}
+
+.login-submit-button {
+    background-color: white;
+    color:black;
+    border: 2px solid black;
+}
+
+.signup-submit-button {
+    background-color: white;
+    color:black;
+    border: 2px solid black;
+}
+
+.choose-login-container, .choose-signup-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 300px;
+    min-height: 450px;
+    background-color: black;
+    transition: 0.6s;
+    border-radius: 20px;
+}
+
+.choose-login-container {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.choose-signup-container {
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+.choose-login-container h3, .choose-signup-container h3 {
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: flex;
+}
+
+
+
