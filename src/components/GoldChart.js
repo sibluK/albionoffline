@@ -188,7 +188,7 @@ function GoldChart() {
                 setSilver(goldToSilver(e.target.value));
               }}
             ></input>
-            <h3>{formatNumber(silver)}<img id='silver-icon' src='silver.png'></img></h3>
+            <h3>{formatNumber(silver)}<img id='silver-icon' src='silver.png' alt='Silver Coin'></img></h3>
           </div>
           <div className='silver-to-gold-wrapper'>
             <h4>Input Silver:</h4>
@@ -199,7 +199,7 @@ function GoldChart() {
                 setGold(silverToGold(e.target.value));
               }}
             ></input>
-            <h3>{formatNumber(gold)}<img id='gold-icon' src='gold.png'></img></h3>
+            <h3>{formatNumber(gold)}<img id='gold-icon' src='gold.png' alt='Gold Coin'></img></h3>
           </div>
         </div>
 

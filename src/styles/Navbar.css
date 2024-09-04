@@ -16,6 +16,7 @@
   font-size: 1.4rem;
   color: #fff;
   text-decoration: none;
+  text-wrap: nowrap;
 }
 
 .nav-menu {
@@ -31,6 +32,7 @@
 .nav-links {
   color: #fff;
   text-decoration: none;
+  text-wrap: nowrap;
 }
 
 .nav-links:hover {
@@ -42,6 +44,7 @@
   border-radius: 7px;
   cursor: pointer;
   transition: 0.2s;
+  border: 1px solid red;
 }
 
 .login-button {
@@ -54,6 +57,7 @@
   background-color: whitesmoke;
   border: none;
   color: black;
+  border: 2px solid whitesmoke;
 }
 
 /* Remove default link styles inside buttons */
@@ -68,6 +72,7 @@
 
 .signup-button:hover {
   background-color: rgb(201, 201, 201);
+  border: 2px solid rgb(201, 201, 201);
 }
 
 .login-button:hover {
@@ -90,7 +95,12 @@
   left: 90%;
 }
 
-@media screen and (max-width: 768px) {
+.login-signup {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+@media screen and (max-width: 900px) {
   .navbar-container {
     display: flex;
     justify-content: space-between;
@@ -112,6 +122,7 @@
     justify-content: center;
     align-items: center;
     z-index: 3;
+
   }
 
   .nav-menu.active {
@@ -119,12 +130,12 @@
   }
 
   .nav-item {
-    margin: 50px 0;
+    margin: 30px 0;
     text-align: center;
   }
 
   .nav-links {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   .menu-icon {
@@ -134,16 +145,22 @@
 
   .login-button, .signup-button {
     width: 150px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .navbar-logo {
     font-size: 1.8rem;
   }
 
-  .nav-item:nth-last-child(2) {
+  .nav-item:nth-last-child(1) {
     margin-bottom: 10px;
   }
+
+  .login-signup {
+    flex-direction: column;
+    justify-content: center;
+  }
+
 }
 
 @media screen and (max-width: 500px) {
