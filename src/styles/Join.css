@@ -1,8 +1,9 @@
 .join-page {
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Avoid vertical centering */
     align-items: center;
-    height: calc(100vh - 150px);
+    min-height: calc(100vh - 150px); /* Allow page to grow and be scrollable */
+    padding-top: 35px; /* To account for fixed navbar */
 }
 
 .signup-wrapper, .login-wrapper {
@@ -113,6 +114,20 @@
 
 .visible {
     display: flex;
+}
+
+@media screen and (max-width: 900px) {
+    .join-page {
+
+    }
+    
+    .signup-login-container {
+        flex-direction: column;
+    }
+
+    .choose-login-container, .choose-signup-container {
+        border-radius: 20px;
+    }
 }
 
 

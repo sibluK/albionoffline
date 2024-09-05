@@ -1,18 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 function Navbar() {
   const [click, setClick] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${scrollY > 100 ? 'navbar-hidden' : ''}`}>
       <div className="navbar-container">
-        <span className='logo-and-name'>
+        <span className="logo-and-name">
           <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
             Albion Offline
           </Link>
@@ -45,16 +58,7 @@ function Navbar() {
                 <button className="nav-item login-button" onClick={closeMobileMenu}>Join</button>
               </Link>
             </li>
-            {/* 
-                        <li>
-              <Link to="/signup">
-                <button className="nav-item signup-button" onClick={closeMobileMenu}>Sign Up</button>
-              </Link>
-            </li>
-            */}
-
           </span>
-
         </ul>
       </div>
     </nav>

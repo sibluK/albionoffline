@@ -15,6 +15,7 @@ function App() {
     <Router basename={basename}>
       <div className="App">
         <Navbar />
+        <div className="navbar-spacer"></div>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/loadout" element={<LuckyLoadout />} />

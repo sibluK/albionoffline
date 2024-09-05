@@ -3,6 +3,16 @@
   color: #fff;
   padding: 15px 0px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  z-index: 100000;
+  opacity: 1;
+  transition: 0.5s ease-in-out; /* Smooth fading */
+  height: 35px;
+}
+
+.navbar-hidden {
+  opacity: 0; /* Fade out when user scrolls down */
 }
 
 .navbar-container {

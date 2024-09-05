@@ -152,7 +152,7 @@ function GoldChart() {
               />
               <Tooltip />
               <Line type="monotone" dataKey="price" stroke="#E1C917" activeDot={{ r: 6 }} />
-              <Brush dataKey="timestamp" height={30} stroke="#000000" />
+              <Brush dataKey="timestamp" height={30} stroke="#000000"/>
           </LineChart>
         </ResponsiveContainer>
         <div className='button-wrapper'>
