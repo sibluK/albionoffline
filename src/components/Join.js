@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/Join.css';
+import { signInWithPopup } from 'firebase/auth';
+import { auth, provider } from '../firebaseConfig.js';  // Import Firebase auth and provider
 
 function Join() {
 
@@ -31,6 +33,17 @@ function Join() {
     // Add your signup logic here
   };
 
+  // Google Login handler
+  const handleGoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      console.log('User signed in via Google: ', user);
+    } catch (error) {
+      console.error('Error during Google sign-in: ', error);
+    }
+  };
+
   return (
     <div className="join-page">
       <div className="signup-login-container">
@@ -53,9 +66,18 @@ function Join() {
                 onChange={(e) => setLoginPassword(e.target.value)} 
               />
             </h4>
+            {/* Basic Login Button */}
             <button className="login-submit-button" onClick={handleLogin}>
               Login
             </button>
+
+            {/* Google Login Button */}
+            <button className="google-login-button" onClick={handleGoogleLogin}>
+              <img src='google.png' alt='google-logo'></img>
+              Sign in with Google
+            </button>
+
+            {/* Switch To Login Window Button */}
             <div className={`choose-login-container
                ${signupState ? 'visible' : 'hidden'}`}>
               <h3>Already have an account?</h3>
@@ -104,9 +126,11 @@ function Join() {
                 onChange={(e) => setConfirmPassword(e.target.value)} 
               />
             </h4>
+            {/* Basic Sign Up Button */}
             <button className="signup-submit-button" onClick={handleSignup}>
               Sign up
             </button>
+            {/* Switch To Sign Up Window Button */}
             <div className={`choose-signup-container
                ${loginState ? 'visible' : 'hidden'}`}>
               <h3>Have not yet signed up?</h3>
