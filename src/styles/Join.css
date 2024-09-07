@@ -18,10 +18,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
-}
-
-.login-container {
     justify-content: center;
     gap: 30px;
 }
@@ -128,6 +124,29 @@
 
 .google-login-button img {
     width: 20px;
+}
+
+.success-message {
+    position: fixed;
+    left: 50%;
+    background-color: #4CAF50; 
+    color: white;
+    padding: 10px;
+    text-align: center;
+    z-index: 100000000;
+    width: 250px;
+    font-size: 15px;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    border-radius: 100px;
+    transform: translate(-50%, -20px); 
+    top: 10%;
+    opacity: 0;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.success-visible {
+    opacity: 1; /* Fully visible */
+    transform: translate(-50%, 0); /* Final position */
 }
 
 @media screen and (max-width: 900px) {
