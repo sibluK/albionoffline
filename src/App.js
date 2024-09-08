@@ -21,6 +21,7 @@ function AnimatedRoutes() {
   const joinRef = useRef(null);
   const profileRef = useRef(null);
 
+  ////////
   return (
     <TransitionGroup>
       <CSSTransition
