@@ -21,7 +21,7 @@ function Login({ signupState, setLoginState, setSignupState }) {
 
             setSuccessMessage('Successfully logged in!');
             setShowSuccess(true);
-            
+
             setTimeout(() => {
                 setShowSuccess(false);
               }, 1500);

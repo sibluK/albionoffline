@@ -5,6 +5,7 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import { useAuth } from "../context/AuthContext";
 import { auth } from "../firebaseConfig";
 import { signOut } from "firebase/auth";
+import { ReactComponent as Logo } from '../assets/user-icon.svg';
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -14,6 +15,7 @@ function Navbar() {
   const closeMobileMenu = () => setClick(false);
 
   const { user } = useAuth();
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,11 +70,19 @@ function Navbar() {
 
           {user ? (
             <>
-              <li className="nav-item">
-                <Link to="/profile" className="nav-links" onClick={closeMobileMenu}>
-                  {user.email.split("@")[0].charAt(0).toUpperCase() + user.email.split("@")[0].slice(1)}
-                </Link>
-              </li>
+              <div className='username-photo'>
+                <li className="nav-item">
+                  <Link to="/profile" className="nav-links" onClick={closeMobileMenu}>
+                    {user.email.split("@")[0].charAt(0).toUpperCase() + user.email.split("@")[0].slice(1)}
+                  </Link>
+                </li>
+                {user.photoURL ? (
+                  <img className='user-photo' src={user.photoURL} alt="User Photo"/>
+                ) : (
+                  <Logo className='user-photo' />
+                )}
+              </div>
+
 
               <li>
                 <Link to="/join">
