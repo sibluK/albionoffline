@@ -4,9 +4,7 @@ import GoldChart from './GoldChart.js';
 function GoldTracker() {
 
   return (
-      <>
-        <GoldChart/>
-      </>
+    <GoldChart/>
   );
 }
 

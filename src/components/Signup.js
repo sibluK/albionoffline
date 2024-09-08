@@ -1,26 +1,36 @@
 import React, { useState } from 'react';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signOut } from 'firebase/auth';
 import { auth } from '../firebaseConfig'; 
+import { useNavigate } from 'react-router-dom'; 
 
-function Signup({ loginState, signupState, setLoginState, setSignupState }) {
+function Signup({ loginState, setLoginState, setSignupState }) {
 
     const [signupEmail, setSignupEmail] = useState('');
     const [signupPassword, setSignupPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
-    const [signupError, setSignupError] = useState('');
+    const [signupError, setSignupError] = useState(false);
+    const [signupErrorMessage, setSignupErrorMessage] = useState(null);
     const [showSuccess, setShowSuccess] = useState(false);
+    const navigate = useNavigate();
     
+    const errorMessages = {
+      'auth/missing-password': 'Password is required. Try again.',
+      'auth/email-already-in-use': 'The email address is already in use by another account. Try again.',
+      'auth/invalid-email': 'The email address is not valid. Try again.',
+      'auth/weak-password': 'The password is too weak. It should be at least 6 characters long.',
+      'auth/missing-email': 'The email address is missing. Please input email.'
+    };
+
     const handleSignup = async () => {
     if (signupPassword !== confirmPassword) {
-        alert('Passwords do not match');
+        setSignupErrorMessage('Passwords do not match. Please check the passwords.')
+        setSignupError(true);
         return;
     }
 
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, signupEmail, signupPassword);
-      const user = userCredential.user;
-      console.log('User created:', user);
+      await createUserWithEmailAndPassword(auth, signupEmail, signupPassword);
 
       setSuccessMessage('Successfully signed up!');
       setShowSuccess(true);
@@ -31,12 +41,13 @@ function Signup({ loginState, signupState, setLoginState, setSignupState }) {
 
       setTimeout(() => {
         setSuccessMessage('');
-        setLoginState(true);
-        setSignupState(false);
+        navigate('/'); 
       }, 2500);
     } catch (error) {
       console.error('Error during signup:', error);
-      setSignupError(error.message);
+      const errorMessage = errorMessages[error.code] || 'An unknown error occurred. Please try again.';
+      setSignupErrorMessage(errorMessage);
+      setSignupError(true);
     }
   };
 
@@ -57,14 +68,17 @@ function Signup({ loginState, signupState, setLoginState, setSignupState }) {
         <h4>
             Email: 
             <input 
+                className={`${signupError ? 'invalid-credentials': ''}`}
                 type="email" 
                 value={signupEmail} 
                 onChange={(e) => setSignupEmail(e.target.value)} 
             />
+            
         </h4>
         <h4>
             Password: 
             <input 
+                className={`${signupError ? 'invalid-credentials': ''}`}
                 type="password" 
                 value={signupPassword} 
                 onChange={(e) => setSignupPassword(e.target.value)} 
@@ -73,17 +87,19 @@ function Signup({ loginState, signupState, setLoginState, setSignupState }) {
         <h4>
             Confirm Password: 
             <input 
+                className={`${signupError ? 'invalid-credentials': ''} `}
                 type="password" 
                 value={confirmPassword} 
                 onChange={(e) => setConfirmPassword(e.target.value)} 
             />
         </h4>
 
+        {signupErrorMessage && <h4 className='login-error-message'>{signupErrorMessage}</h4>}
+        
+
         <button className="signup-submit-button" onClick={handleSignup}>
             Sign up
         </button>
-
-        {signupError && <p>{signupError}</p>}
 
         <div className={`choose-signup-container ${loginState ? 'visible' : 'hidden'}`}>
             <h3>Have not yet signed up?</h3>
@@ -91,6 +107,8 @@ function Signup({ loginState, signupState, setLoginState, setSignupState }) {
                 setLoginState(false);
                 setSignupState(true);
                 clearInputs();
+                setSignupError(false);
+                setSignupErrorMessage('');
             }}>
             Sign Up
             </button>

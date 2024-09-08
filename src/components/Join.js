@@ -17,7 +17,6 @@ return (
           <div className="login-container">
 
             <Login
-              loginState={loginState}
               signupState={signupState}
               setLoginState={setLoginState}
               setSignupState={setSignupState}
@@ -33,7 +32,6 @@ return (
             
             <Signup
               loginState={loginState}
-              signupState={signupState}
               setLoginState={setLoginState}
               setSignupState={setSignupState}
             />

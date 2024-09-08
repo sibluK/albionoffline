@@ -9,16 +9,37 @@
 }
 
 .App {
-    display: flex;
-    flex-direction: column;
     min-height: 100vh;
 }
-  
+
 .content {
     flex: 1;
 }
 
 .navbar-spacer {
-    height: 40px;
+    height: 60px;
     width: 100%;
 }
+
+.fade-enter {
+    opacity: 0;
+}
+
+.fade-enter-active {
+    opacity: 1;
+    transition: opacity 400ms;
+}
+
+.fade-exit {
+    opacity: 1;
+}
+
+.fade-exit-active {
+    opacity: 0;
+    transition: opacity 400ms;
+}
+
+.route-container {
+    position: relative;
+    width: 100%;
+  }

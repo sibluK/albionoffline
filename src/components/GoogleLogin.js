@@ -11,9 +11,7 @@ function GoogleLogin() {
   
     const handleGoogleLogin = async () => {
       try {
-        const result = await signInWithPopup(auth, provider);
-        const user = result.user;
-        console.log('User signed in via Google: ', user);
+        await signInWithPopup(auth, provider);
         setSuccessMessage('Successfully logged in!');
         setShowSuccess(true);
         

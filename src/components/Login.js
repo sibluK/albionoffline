@@ -3,20 +3,22 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom'; 
 import { auth } from '../firebaseConfig'; 
 
-function Login({ loginState, signupState, setLoginState, setSignupState }) {
+function Login({ signupState, setLoginState, setSignupState }) {
 
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
-    const [loginError, setLoginError] = useState(null);
+    const [loginError, setLoginError] = useState(false);
+    const [loginErrorMessage, setLoginErrorMessage] = useState(null);
     const [successMessage, setSuccessMessage] = useState('');
     const [showSuccess, setShowSuccess] = useState(false);
     const navigate = useNavigate();
 
+    const errorMessage = "The email address or password you entered is incorrect. Please try again.";
+
     const handleLogin = async () => {
         try {
-            const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-            const user = userCredential.user;
-            console.log('User logged in:', user);
+            await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+
             setSuccessMessage('Successfully logged in!');
             setShowSuccess(true);
             
@@ -31,7 +33,8 @@ function Login({ loginState, signupState, setLoginState, setSignupState }) {
         
         } catch (error) {
             console.error('Error during login:', error);
-            setLoginError(error.message);
+            setLoginErrorMessage(error.message);
+            setLoginError(true);
         }
     };
 
@@ -52,6 +55,7 @@ return (
         <h4>
             Email: 
             <input 
+                className={`${loginError ? 'invalid-credentials': ''}`}
                 type="text" 
                 value={loginEmail} 
                 onChange={(e) => setLoginEmail(e.target.value)} 
@@ -60,17 +64,21 @@ return (
         <h4>
             Password: 
             <input 
+                className={`${loginError ? 'invalid-credentials': ''}`}
                 type="password" 
                 value={loginPassword} 
                 onChange={(e) => setLoginPassword(e.target.value)} 
             />
+            <span className="forgot-password-button">Forgot password?</span>
         </h4>
+        
+
+        {loginErrorMessage && <h4 className='login-error-message'>{errorMessage}</h4>}
 
         <button className="login-submit-button" onClick={handleLogin}>
             Login
         </button>
 
-        {loginError && <p>{loginError}</p>}
 
         <div className={`choose-login-container ${signupState ? 'visible' : 'hidden'}`}>
             <h3>Already have an account?</h3>
@@ -78,6 +86,8 @@ return (
                 setLoginState(true);
                 setSignupState(false);
                 clearInputs();
+                setLoginError(false)
+                setLoginErrorMessage(null)
             }}>
                 Log In
             </button>

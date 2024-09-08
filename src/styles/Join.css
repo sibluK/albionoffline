@@ -28,6 +28,7 @@
     padding: 2px;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    
 }
 
 .signup-container h4, .login-container h4 {
@@ -145,8 +146,39 @@
 }
 
 .success-visible {
-    opacity: 1; /* Fully visible */
-    transform: translate(-50%, 0); /* Final position */
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.invalid-credentials {
+    border: 1px solid red !important;
+}
+
+.login-error-message {
+    color: red;
+    text-align: center;
+    width: 250px;
+}
+
+.forgot-password-button {
+    color: rgb(29, 72, 200);
+    font-size: 0.6rem;
+    padding-top: 3px;
+    padding-left: 5px;
+    transition: 0.5s;
+}
+
+.forgot-password-button:hover {
+    cursor: pointer;
+}
+
+.forgot-password-button:active {
+    color: rgb(22, 54, 149);
+}
+
+.signup-input {
+    display: flex;
+    flex-direction: row !important;
 }
 
 @media screen and (max-width: 900px) {
