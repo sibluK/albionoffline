@@ -42,7 +42,7 @@ function Signup({ loginState, setLoginState, setSignupState }) {
       setTimeout(() => {
         setSuccessMessage('');
         navigate('/'); 
-      }, 2500);
+      }, 2000);
     } catch (error) {
       console.error('Error during signup:', error);
       const errorMessage = errorMessages[error.code] || 'An unknown error occurred. Please try again.';

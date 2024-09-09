@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/Inventory.css';
 import LoadoutPrice from './LoadoutPrice.js';
+import DiceIcon from '../assets/dice.png';
+import UnlockedLockIcon from '../assets/unlocked.png';
 
 function Inventory() {
   const [fetchedData, setFetchedData] = useState({});
@@ -115,11 +117,12 @@ function Inventory() {
   };
   
   const showTooltip = (event, item) => {
+
     setTooltip({
       visible: true,
       content: item,
       x: event.clientX + window.scrollX,
-      y: event.clientY + window.scrollY  
+      y: event.clientY + window.scrollY
     });
   };
 
@@ -128,10 +131,11 @@ function Inventory() {
   };
 
   const updateTooltipPosition = (event) => {
+    const spacerHeight = document.querySelector('.navbar-spacer').offsetHeight || 0;
     setTooltip((prevTooltip) => ({
       ...prevTooltip,
-      x: event.clientX + window.scrollX, 
-      y: event.clientY + window.scrollY  
+      x: event.clientX + window.scrollX,
+      y: event.clientY + window.scrollY - spacerHeight // Adjusted for spacer height
     }));
   };
 
@@ -336,11 +340,11 @@ function Inventory() {
         </div>
 
         <div className='button-wrapper'>
-          <button className='button' id='reroll-button'  onClick={() => reroll(fetchedData)}><img src='dices.png' alt='dices'></img></button>
+          <button className='button' id='reroll-button'  onClick={() => reroll(fetchedData)}><img src={DiceIcon} alt='Dice'></img></button>
         </div>
 
         <div className='button-wrapper'>
-          <button className='button' id='refresh-button'  onClick={() => refresh()}><img src='unlocked.png' alt='lock'></img></button>
+          <button className='button' id='refresh-button'  onClick={() => refresh()}><img src={UnlockedLockIcon} alt='Unlocked Lock'></img></button>
         </div>
 
       </div>

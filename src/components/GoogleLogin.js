@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { signInWithPopup } from 'firebase/auth';
 import { auth, provider } from '../firebaseConfig.js';
 import { useNavigate } from 'react-router-dom';
+import GoogleIcon from '../assets/google.png';
 
 function GoogleLogin() {
 
@@ -37,7 +38,7 @@ function GoogleLogin() {
         )}
     
         <button className="google-login-button" onClick={handleGoogleLogin}>
-            <img src='google.png' alt='google-logo'></img>
+            <img src={GoogleIcon} alt='Google Icon'></img>
             Sign in with Google
         </button>
     </>

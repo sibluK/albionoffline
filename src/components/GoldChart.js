@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Brush, ResponsiveContainer } from 'recharts';
 import * as d3 from 'd3';
 import '../styles/GoldChart.css';
+import SilverIcon from '../assets/silver.png';
+import GoldIcon from '../assets/gold.png'
 
 const formatDate = (date) => {
     const options = { month: '2-digit', day: '2-digit', year: 'numeric' };
@@ -188,7 +190,7 @@ function GoldChart() {
                 setSilver(goldToSilver(e.target.value));
               }}
             ></input>
-            <h3>{formatNumber(silver)}<img id='silver-icon' src='silver.png' alt='Silver Coin'></img></h3>
+            <h3>{formatNumber(silver)}<img id='silver-icon' src={SilverIcon} alt='Silver Coin'></img></h3>
           </div>
           <div className='silver-to-gold-wrapper'>
             <h4>Input Silver:</h4>
@@ -199,7 +201,7 @@ function GoldChart() {
                 setGold(silverToGold(e.target.value));
               }}
             ></input>
-            <h3>{formatNumber(gold)}<img id='gold-icon' src='gold.png' alt='Gold Coin'></img></h3>
+            <h3>{formatNumber(gold)}<img id='gold-icon' src={GoldIcon} alt='Gold Coin'></img></h3>
           </div>
         </div>
 
