@@ -1,16 +1,24 @@
 {
   "files": {
-    "main.css": "/albionoffline/static/css/main.d77cd718.css",
-    "main.js": "/albionoffline/static/js/main.63066aa4.js",
+    "main.css": "/albionoffline/static/css/main.a9339126.css",
+    "main.js": "/albionoffline/static/js/main.5ff41cc1.js",
     "static/js/453.d68e9e3a.chunk.js": "/albionoffline/static/js/453.d68e9e3a.chunk.js",
+    "static/media/dice.png": "/albionoffline/static/media/dice.dc473346c4b567a80c8f.png",
+    "static/media/google.png": "/albionoffline/static/media/google.e12914ad8afda3f6f2e8.png",
+    "static/media/unlocked.png": "/albionoffline/static/media/unlocked.6b736d6c5d59dfdd5159.png",
+    "static/media/gold.png": "/albionoffline/static/media/gold.4bfeb363caf125b73bf4.png",
+    "static/media/coins.svg": "/albionoffline/static/media/coins.2892ebd0b656d7df4809f57784d5d6a0.svg",
+    "static/media/line-chart-icon.svg": "/albionoffline/static/media/line-chart-icon.2a48dfe274d6e1966db680c0406ebbd7.svg",
+    "static/media/in-progress.svg": "/albionoffline/static/media/in-progress.db9980d52d3e1a7b7f607decdb05bee0.svg",
+    "static/media/loadout.svg": "/albionoffline/static/media/loadout.75966f317df491eb89f370f7126bc5d5.svg",
     "index.html": "/albionoffline/index.html",
     "static/media/user-icon.svg": "/albionoffline/static/media/user-icon.15ee8331ade633c76a0072de954b0dc7.svg",
-    "main.d77cd718.css.map": "/albionoffline/static/css/main.d77cd718.css.map",
-    "main.63066aa4.js.map": "/albionoffline/static/js/main.63066aa4.js.map",
+    "main.a9339126.css.map": "/albionoffline/static/css/main.a9339126.css.map",
+    "main.5ff41cc1.js.map": "/albionoffline/static/js/main.5ff41cc1.js.map",
     "453.d68e9e3a.chunk.js.map": "/albionoffline/static/js/453.d68e9e3a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d77cd718.css",
-    "static/js/main.63066aa4.js"
+    "static/css/main.a9339126.css",
+    "static/js/main.5ff41cc1.js"
   ]
 }
