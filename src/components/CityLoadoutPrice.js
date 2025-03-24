@@ -1,7 +1,6 @@
 import React from 'react';
 import '../styles/CityLoadoutPrice.css';
 
-
 const formatNumber = (number) => {
     return new Intl.NumberFormat('de-DE').format(number);
 };
